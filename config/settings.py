@@ -39,7 +39,7 @@ class Settings(BaseSettings):
 
     # ── Embedding Configuration ────────────────────────────────────────
     embed_model: str = Field(
-        default="text-embedding-3-small",
+        default="tBAAI/bge-small-en-v1.5",
         description=(
             "Embedding model. Options:\n"
             "  text-embedding-3-small: $0.02/1M tokens, 1536 dims (MVP)\n"
