@@ -6,3 +6,5 @@ chromadb
 pydantic-settings
 python-dotenv
 pymupdf
+fastapi
+uvicorn

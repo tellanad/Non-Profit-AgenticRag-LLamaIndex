@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "chromadb>=1.5.1",
+    "fastapi>=0.129.0",
     "llama-index-core>=0.14.15",
     "llama-index-embeddings-openai>=0.5.1",
     "llama-index-llms-openai>=0.6.19",
@@ -13,4 +14,5 @@ dependencies = [
     "pydantic-settings>=2.13.1",
     "pymupdf>=1.27.1",
     "python-dotenv>=1.2.1",
+    "uvicorn>=0.41.0",
 ]
