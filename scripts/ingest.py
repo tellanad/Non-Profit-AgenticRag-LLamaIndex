@@ -36,7 +36,8 @@ def main():
 
     logger.info(f"Starting ingestion for: {pdf_path}")
 
-    # TODO: Step 1 — Parse PDF (ingestion/pdf_parser.py)
+from ingestion.pipeline import run_ingestion
+index = run_ingestion(pdf_path)
     # TODO: Step 2 — Chunk into nodes (ingestion/chunker.py)
     # TODO: Step 3 — Embed and store (ingestion/embedder.py)
 
