@@ -10,22 +10,25 @@ WHY A SEPARATE SCRIPT?
 - Will be replaced by FastAPI endpoint in Phase 2
 """
 
+import asyncio
 import sys
 from pathlib import Path
 
+# Add project root to path so imports work — MUST come before other imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import settings
 from config.logging_config import setup_logging, get_logger
+from agent.rag_agent import create_agent
 
 logger = get_logger(__name__)
 
 
-def main():
+async def main():
     setup_logging(settings.log_level)
     logger.info("Loading agent...")
 
-    # TODO: Load the agent from agent/rag_agent.py
+    agent = create_agent(verbose=True)
 
     print("\n=== Agentic RAG — Non-Profit Document Assistant ===")
     print("Type 'quit' to exit.\n")
@@ -38,9 +41,10 @@ def main():
         if not query:
             continue
 
-        # TODO: response = agent.chat(query)
-        # TODO: print(f"\nAssistant: {response}\n")
+        # v0.14+ ReActAgent is Workflow-based and uses async .run()
+        response = await agent.run(query)
+        print(f"\nAssistant: {response}\n")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

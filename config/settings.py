@@ -26,9 +26,18 @@ class Settings(BaseSettings):
         ...,
         description="OpenAI API key for LLM and embedding calls",
     )
+    groq_api_key: str = Field(
+        ...,
+        description="Groq API key for LLM calls",
+    )
     llm_model: str = Field(
-        default="gpt-4o",
-        description="LLM model name. Options: gpt-4o, gpt-4o-mini, gpt-3.5-turbo",
+    default="gpt-4o-mini",
+    description=(
+        "Groq LLM model. Options:\n"
+        "  llama-3.3-70b-versatile: Best quality, fast\n"
+        "  llama-3.1-8b-instant: Fastest, lower quality\n"
+        "  mixtral-8x7b-32768: Good balance, 32k context"
+        ),
     )
     llm_temperature: float = Field(
         default=0.0,

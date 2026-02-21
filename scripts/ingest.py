@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import settings
 from config.logging_config import setup_logging, get_logger
+from ingestion.pipeline import run_ingestion
 
 logger = get_logger(__name__)
 
@@ -36,10 +37,7 @@ def main():
 
     logger.info(f"Starting ingestion for: {pdf_path}")
 
-from ingestion.pipeline import run_ingestion
-index = run_ingestion(pdf_path)
-    # TODO: Step 2 — Chunk into nodes (ingestion/chunker.py)
-    # TODO: Step 3 — Embed and store (ingestion/embedder.py)
+    index = run_ingestion(pdf_path)
 
     logger.info("Ingestion complete!")
 
